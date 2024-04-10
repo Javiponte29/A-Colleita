@@ -21,11 +21,16 @@ public class Producto {
     @Column
     private Integer precio;
 
+    @Column(nullable = false)
+    private String direccion;
+
+    @Column(nullable = false)
+    private Integer cantidad;
+
     @Column(nullable = false, length = 500)
     private String descripcion;
 
     @Column(nullable = false)
     private String imagen;
 
-    
 }
