@@ -35,13 +35,13 @@ public class Producto {
     private Integer cantidad;
 
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(name = "idcategoria")
     private Categoria categoria;
 
     @Column(nullable = false, length = 500)
     private String descripcion;
 
-    @Column(nullable = false)
+    @Column
     private String imagen;
 
     public Integer getId() {
