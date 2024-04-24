@@ -1,5 +1,14 @@
 import './App.css'
+import Home from './components/Home';
 
-const App = () => <h1>Hola</h1>;
+function App() {
+
+
+    return(
+        <div>
+            <Home />
+        </div>
+    );
+};
 
 export default App;
