@@ -8,10 +8,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javi.Colleita.models.Producto;
 import javi.Colleita.services.IProductoService;
+
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
+@CrossOrigin
 @RestController
 @RequestMapping("/cont")
 public class ProductoController {
