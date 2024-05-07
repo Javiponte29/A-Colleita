@@ -1,5 +1,16 @@
 import './NavBar.css';
 
-const NavBar = () => <h1>NavBar</h1>;
+const NavBar = () => {
+
+
+
+    return (
+        <div>
+            <h1 className="text-3xl font-bold underline">
+        Hello world!
+    </h1>
+        </div>
+    );
+};
 
 export default NavBar;
