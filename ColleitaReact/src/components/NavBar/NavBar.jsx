@@ -20,7 +20,7 @@ const NavBar = () => {
     return (
 <div className="flex items-center justify-around border-b-2 shadow-lg pb-4">
     <div className='flex items-center justify-between space-x-6'>
-    <NavLink to={"/"}><img src="https://cdn-icons-png.flaticon.com/512/424/424227.png" alt="Logo" className="w-14 h-14" /></NavLink>
+    <NavLink to={"/"}><img src="https://cdn-icons-png.flaticon.com/512/424/424227.png" alt="Logo" className="w-20 h-20" /></NavLink>
     <NavLink to={"/"} className="text-green-500 font-bold text-4xl">A Colleita</NavLink>
     </div>
     <nav className="space-x-20">

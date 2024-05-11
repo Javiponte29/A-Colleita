@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import './Home.css';
+import { NavLink } from 'react-router-dom';
 
 const Home = () => {
 
@@ -23,9 +24,11 @@ const Home = () => {
     }, [])
 
     return (
-        <div>
-            <h1 className='text-4xl font-bold'>Hola</h1>
-        </div>
+<div className="relative bg-custom bg-cover h-80">
+    <h2 className='text-4xl font-bold text-white w-80 '>Tus frutas y verduras favoritas en la misma web</h2>
+    <NavLink to={''} className={'pb-2 pt-2 pl-4 pr-4 bg-green-600 rounded'}>¡Compra aquí!</NavLink>
+</div>
+
     );
 };
 
