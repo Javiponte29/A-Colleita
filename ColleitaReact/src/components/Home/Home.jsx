@@ -23,7 +23,9 @@ const Home = () => {
     }, [])
 
     return (
-        <h1>Hola</h1>
+        <div>
+            <h1 className='text-4xl font-bold'>Hola</h1>
+        </div>
     );
 };
 
