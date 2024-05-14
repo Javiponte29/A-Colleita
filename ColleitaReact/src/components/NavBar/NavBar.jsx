@@ -37,7 +37,7 @@ const NavBar = () => {
     <nav className={`lg:flex lg:items-center lg:justify-around lg:space-x-20 lg:block ${isOpen ? 'block' : 'hidden'} lg:relative w-full lg:w-auto flex flex-col lg:flex-row`}>
         <div className="font-bold text-2xl lg:text-2xl hover:text-green-600 text-center"><NavLink to={"/"}>Home</NavLink></div>
         <div className="font-bold text-2xl lg:text-2xl hover:text-green-600 text-center"><NavLink to={""}>Productos</NavLink></div>
-        <div className="font-bold text-2xl lg:text-2xl hover:text-green-600 text-center"><NavLink to={""}>About us</NavLink></div>
+        <div className="font-bold text-2xl lg:text-2xl hover:text-green-600 text-center"><NavLink to={"/register"}>About us</NavLink></div>
         <div className="font-bold text-2xl lg:text-2xl hover:text-green-600 text-center"><NavLink to={""}>Login</NavLink></div>
         <div className="font-bold text-2xl lg:text-2xl hover:text-green-600 flex justify-center"><NavLink to={""}><svg width="30" height="30" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round"> <path stroke="none" d="M0 0h24v24H0z"/> <circle cx="9" cy="19" r="2"/> <circle cx="17" cy="19" r="2"/> <path d="M3 3h2l2 12a3 3 0 0 0 3 2h7a3 3 0 0 0 3 -2l1 -7h-15.2"/> </svg></NavLink></div>
     </nav>

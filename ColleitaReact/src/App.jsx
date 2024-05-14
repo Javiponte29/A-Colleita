@@ -4,6 +4,7 @@ import Home from './components/Home/Home';
 import AuthProvider from './context/authContext';
 import { useEffect, useState } from 'react';
 import NavBar from './components/NavBar/NavBar';
+import Register from './components/Register/Register';
 
 function App() {
     const [productos, setProductos] = useState([]);
@@ -27,6 +28,7 @@ function App() {
                     <Routes>
                         <Route path='/' element={<Navigate to={"/home"} />} />
                         <Route path='/home' element={<Home />} />
+                        <Route path='/register' element={<Register/>} />
                     </Routes>
                 </AuthProvider>
             </div>
