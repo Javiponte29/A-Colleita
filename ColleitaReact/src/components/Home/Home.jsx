@@ -24,9 +24,9 @@ const Home = () => {
     }, [])
 
     return (
-<div className="relative bg-custom bg-cover h-80">
-    <h2 className='text-4xl font-bold text-white w-80 '>Tus frutas y verduras favoritas en la misma web</h2>
-    <NavLink to={''} className={'pb-2 pt-2 pl-4 pr-4 bg-green-600 rounded'}>¡Compra aquí!</NavLink>
+    <div className="relative bg-custom bg-cover h-80">
+        <h2 className='text-4xl font-bold text-white w-80 ml-20 mb-10 pt-10'>Tus frutas y verduras favoritas en la misma web.</h2>
+        <NavLink to={''} className={'pb-2 pt-2 pl-4 pr-4 text-2xl text-white font-semibold bg-verde bg-opacity-50 rounded ml-20'}>¡Compra aquí!</NavLink>
 </div>
 
     );
