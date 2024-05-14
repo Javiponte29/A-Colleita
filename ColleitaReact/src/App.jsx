@@ -5,6 +5,7 @@ import AuthProvider from './context/authContext';
 import { useEffect, useState } from 'react';
 import NavBar from './components/NavBar/NavBar';
 import Register from './components/Register/Register';
+import Footer from './components/Footer/Footer';
 
 function App() {
     const [productos, setProductos] = useState([]);
@@ -30,6 +31,7 @@ function App() {
                         <Route path='/home' element={<Home />} />
                         <Route path='/register' element={<Register/>} />
                     </Routes>
+                    <Footer />
                 </AuthProvider>
             </div>
         </Router>

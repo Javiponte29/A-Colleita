@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useAuth } from '../../context/authContext';
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 const Register = () => {
@@ -38,22 +38,16 @@ const Register = () => {
     }
 
     return (
-        <div>
-                    <div className='form-reg'>
-            
-
-            <form onSubmit={handleSubmit}>
-            {error && <p>{error}</p>}
-                <label htmlFor="email">Email</label>
-                <input name='email' id='email'  type="email" placeholder='youremail@gmail.com'
-                onChange={handleChange}
-                />
-                
-                <label htmlFor="password">Password</label>
-                <input type="password" name='password' id='password' placeholder='Min 6 caractecres'
-                onChange={handleChange}/>
-                <button>Registrarse</button>
-            </form>
+        <div className="bg-lr flex justify-center">
+            <div className='bg-black bg-opacity-30 pt-6 rounded-xl w-1/4 flex flex-col fixed mt-10'>
+            <h1 className="text-4xl text-white font-bold text-center mb-3">Register</h1>
+                <form onSubmit={handleSubmit} className="flex flex-col items-center justify-around h-72">
+                    {error && <p>{error}</p>}
+                    <input className="w-60 h-14 border border-white text-white bg-black bg-opacity-60 font-medium pl-4" name='email' id='email' type="email" placeholder='Correo electrónico' onChange={handleChange} />
+                    <input className="w-60 h-14 border border-white text-white bg-black bg-opacity-60 font-medium pl-4" type="password" name='password' id='password' placeholder='Contraseña' onChange={handleChange}/>
+                    <p className="text-white">¿Ya tienes cuenta? <Link to={''} className="underline">Inicia Sesión</Link>.</p>
+                    <button className="bg-verde text-white w-60 h-12">Registrarse</button>
+                </form>
             </div>
         </div>
     );

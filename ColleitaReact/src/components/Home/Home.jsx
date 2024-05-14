@@ -18,7 +18,7 @@ const Home = () => {
 
     return (
         <div>
-    <div className="relative bg-custom bg-cover h-80">
+    <div className="relative bg-custom bg-cover">
         <h2 className='text-4xl font-bold text-white w-80 ml-20 mb-10 pt-10'>Tus frutas y verduras favoritas en la misma web.</h2>
         <NavLink to={''} className={'pb-2 pt-2 pl-4 pr-4 text-2xl text-white font-semibold bg-verde bg-opacity-50 rounded ml-20'}>¡Compra aquí!</NavLink>
     </div>
@@ -28,7 +28,8 @@ const Home = () => {
             <Link to={`/${producto.id}`}>
                 <img className='rounded-t-xl' src={producto.imagen} alt={producto.nombre} />
                 <h3 className='text-3xl font-medium m-5'>{producto.nombre}</h3>
-                <h4 className='text-2xl m-5'>{producto.direccion}</h4>
+                <h3 className='text-2xl font-bold ml-5'>Dirección:</h3>
+                <h4 className='text-2xl ml-5 mt-2 mb-4'>{producto.direccion}</h4>
                 <Link to={''} className='text-2xl font-semibold text-white bg-verde2 rounded-b-xl flex justify-center p-2'>Ver Producto</Link>
             </Link>
         </div>

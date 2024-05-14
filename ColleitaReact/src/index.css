@@ -14,3 +14,12 @@
 .bg-verde2 {
     background-color: #6AB742;
 }
+
+.bg-lr {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(https://img.freepik.com/vector-gratis/fondo-pintura-verde-claro_78370-1861.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    height: 86vh;
+}
