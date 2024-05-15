@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import NavBar from './components/NavBar/NavBar';
 import Register from './components/Register/Register';
 import Footer from './components/Footer/Footer';
+import Login from './components/Login/Login';
 
 function App() {
     const [productos, setProductos] = useState([]);
@@ -29,6 +30,7 @@ function App() {
                     <Routes>
                         <Route path='/' element={<Navigate to={"/home"} />} />
                         <Route path='/home' element={<Home />} />
+                        <Route path='/login' element={<Login />} />
                         <Route path='/register' element={<Register/>} />
                     </Routes>
                     <Footer />
