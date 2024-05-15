@@ -22,7 +22,7 @@ const Home = () => {
             setShowWelcomeMessage(true);
             const timer = setTimeout(() => {
                 setShowWelcomeMessage(false);
-            }, 3000); // Oculta el mensaje después de 3 segundos
+            }, 2000); // Oculta el mensaje después de 3 segundos
             return () => clearTimeout(timer);
         }
     }, [user]);
