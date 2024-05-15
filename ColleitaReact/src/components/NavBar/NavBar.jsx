@@ -5,7 +5,7 @@ import { useAuth } from '../../context/authContext'; // Asegúrate de importar e
 
 const NavBar = () => {
     const [productos, setProductos] = useState([]);
-    const { user, logout } = useAuth(); // Obtén el usuario autenticado y la función de logout del contexto
+    const { user } = useAuth(); // Obtén el usuario autenticado del contexto
 
     useEffect(() => {
         fetch(`http://localhost:8080/cont/list`)
@@ -40,22 +40,27 @@ const NavBar = () => {
                 {!user ? (
                     <div className="font-bold text-2xl lg:text-2xl hover:text-green-600 text-center"><NavLink to={"/login"}>Login</NavLink></div>
                 ) : (
-                    <div className="font-bold text-2xl lg:text-2xl hover:text-green-600 text-center"><button onClick={logout}>Logout</button></div>
+                    <div className="font-bold text-2xl lg:text-2xl hover:text-green-600 text-center"><NavLink to={"/profile"}><svg class="h-8 w-8"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                    </svg>
+
+                </NavLink></div>
                 )}
-                <div className="font-bold text-2xl lg:text-2xl hover:text-green-600 flex justify-center"><NavLink to={""}>
+                {/*<div className="font-bold text-2xl lg:text-2xl hover:text-green-600 flex justify-center"><NavLink to={""}>
                     <svg width="30" height="30" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z"/>
                         <circle cx="9" cy="19" r="2"/>
                         <circle cx="17" cy="19" r="2"/>
                         <path d="M3 3h2l2 12a3 3 0 0 0 3 2h7a3 3 0 0 0 3 -2l1 -7h-15.2"/>
                     </svg>
-                </NavLink></div>
+            </NavLink></div>*/}
             </nav>
         </div>
     );
 };
 
 export default NavBar;
+
 
 
 /*            {productos.map(producto =>(
