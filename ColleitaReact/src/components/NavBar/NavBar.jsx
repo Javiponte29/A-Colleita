@@ -25,8 +25,8 @@ const NavBar = () => {
     return (
         <div className="flex flex-col lg:flex-row items-center justify-around border-b-2 shadow-lg pb-4">
             <div className='flex items-center space-x-6'>
-                <NavLink to={"/"}><img src="https://cdn-icons-png.flaticon.com/512/424/424227.png" alt="Logo" className="w-20 h-20" /></NavLink>
-                <NavLink to={"/"} className="verde font-bold text-4xl">A Colleita</NavLink>
+                <NavLink to={"/"} title='Home'><img src="https://cdn-icons-png.flaticon.com/512/424/424227.png" alt="Logo" className="w-20 h-20" /></NavLink>
+                <NavLink to={"/"} title='Home' className="verde font-bold text-4xl">A Colleita</NavLink>
             </div>
             <button className="lg:hidden" onClick={toggleMenu}>
                 <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -34,16 +34,15 @@ const NavBar = () => {
                 </svg>
             </button>
             <nav className={`lg:flex lg:items-center lg:justify-around lg:space-x-20 lg:block ${isOpen ? 'block' : 'hidden'} lg:relative w-full lg:w-auto flex flex-col lg:flex-row`}>
-                <div className="font-bold text-2xl lg:text-2xl hover:text-green-600 text-center"><NavLink to={"/"}>Home</NavLink></div>
-                <div className="font-bold text-2xl lg:text-2xl hover:text-green-600 text-center"><NavLink to={""}>Productos</NavLink></div>
-                <div className="font-bold text-2xl lg:text-2xl hover:text-green-600 text-center"><NavLink to={""}>About us</NavLink></div>
+                <div className="font-bold text-2xl lg:text-2xl hover:text-green-600 text-center"><NavLink title='Home' to={"/"}>Home</NavLink></div>
+                <div className="font-bold text-2xl lg:text-2xl hover:text-green-600 text-center"><NavLink to={""} title='Productos'>Productos</NavLink></div>
+                <div className="font-bold text-2xl lg:text-2xl hover:text-green-600 text-center"><NavLink to={"/aboutus"} title='Sobre nosostros'>About us</NavLink></div>
                 {!user ? (
-                    <div className="font-bold text-2xl lg:text-2xl hover:text-green-600 text-center"><NavLink to={"/login"}>Login</NavLink></div>
+                    <div className="font-bold text-2xl lg:text-2xl hover:text-green-600 text-center"><NavLink to={"/login"} title='Inicio de sesión'>Login</NavLink></div>
                 ) : (
                     <div className="font-bold text-2xl lg:text-2xl hover:text-green-600 text-center flex justify-center"><NavLink to={"/profile"}><svg class="h-8 w-8"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
                     </svg>
-
                 </NavLink></div>
                 )}
                 {/*<div className="font-bold text-2xl lg:text-2xl hover:text-green-600 flex justify-center"><NavLink to={""}>

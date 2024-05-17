@@ -8,6 +8,7 @@ import Register from './components/Register/Register';
 import Footer from './components/Footer/Footer';
 import Login from './components/Login/Login';
 import UserProfile from './components/UserProfile/UserProfile';
+import AboutUs from './components/AboutUs/AboutUs';
 
 function App() {
     const [productos, setProductos] = useState([]);
@@ -34,6 +35,7 @@ function App() {
                         <Route path='/login' element={<Login />} />
                         <Route path='/register' element={<Register/>} />
                         <Route path='/profile' element={<UserProfile/>} />
+                        <Route path='/aboutus' element={<AboutUs/>} />
                     </Routes>
                     <Footer />
                 </AuthProvider>
