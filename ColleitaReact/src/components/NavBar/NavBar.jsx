@@ -35,7 +35,7 @@ const NavBar = () => {
             </button>
             <nav className={`lg:flex lg:items-center lg:justify-around lg:space-x-20 lg:block ${isOpen ? 'block' : 'hidden'} lg:relative w-full lg:w-auto flex flex-col lg:flex-row`}>
                 <div className="font-bold text-2xl lg:text-2xl hover:text-green-600 text-center"><NavLink title='Home' to={"/"}>Home</NavLink></div>
-                <div className="font-bold text-2xl lg:text-2xl hover:text-green-600 text-center"><NavLink to={""} title='Productos'>Productos</NavLink></div>
+                <div className="font-bold text-2xl lg:text-2xl hover:text-green-600 text-center"><NavLink to={"/products"} title='Productos'>Productos</NavLink></div>
                 <div className="font-bold text-2xl lg:text-2xl hover:text-green-600 text-center"><NavLink to={"/aboutus"} title='Sobre nosostros'>About us</NavLink></div>
                 {!user ? (
                     <div className="font-bold text-2xl lg:text-2xl hover:text-green-600 text-center"><NavLink to={"/login"} title='Inicio de sesión'>Login</NavLink></div>
