@@ -11,7 +11,9 @@ import javi.Colleita.services.IProductoService;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
+
 
 @CrossOrigin
 @RestController
@@ -24,5 +26,11 @@ public class ProductoController {
     public List<Producto> get() {
         return pSer.getProductos();
     }
+
+    @GetMapping("/{id}")
+    public Producto getId(@PathVariable Integer id) {
+        return pSer.findByID(id);
+    }
+    
     
 }
