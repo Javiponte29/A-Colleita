@@ -57,13 +57,13 @@ const Products = () => {
             <aside className='flex flex-wrap justify-center'>
                 {currentProducts.map(producto => (
                     <div key={producto.id} className='bg-gray-100 m-10 rounded-xl w-96 flex flex-col justify-between'>
-                        <Link to={`/${producto.id}`}>
-                            <img className='rounded-t-xl h-60 w-96' src={producto.imagen} alt={producto.nombre} />
+                        <div>
+                            <Link to={`/product/${producto.id}`}><img className='rounded-t-xl h-60 w-96' src={producto.imagen} alt={producto.nombre} /></Link>
                             <h3 className='text-3xl font-medium m-5'>{producto.nombre}</h3>
-                            <Link to={'/aboutus'} className='text-2xl font-semibold text-white bg-verde2 rounded-b-xl flex justify-center p-2'>
+                            <Link to={`/product/${producto.id}`} className='text-2xl font-semibold text-white bg-verde2 rounded-b-xl flex justify-center p-2'>
                                 Ver Producto
                             </Link>
-                        </Link>
+                        </div>
                     </div>
                 ))}
             </aside>

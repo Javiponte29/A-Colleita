@@ -10,6 +10,7 @@ import Login from './components/Login/Login';
 import UserProfile from './components/UserProfile/UserProfile';
 import AboutUs from './components/AboutUs/AboutUs';
 import Products from './components/Products/Products';
+import ViewProduct from './components/ViewProduct';
 
 function App() {
     const [productos, setProductos] = useState([]);
@@ -34,6 +35,7 @@ function App() {
                         <Route path='/' element={<Navigate to={"/home"} />} />
                         <Route path='/home' element={<Home />} />
                         <Route path='/products' element={<Products />} />
+                        <Route path='/product/:id' element={<ViewProduct />} />
                         <Route path='/login' element={<Login />} />
                         <Route path='/register' element={<Register/>} />
                         <Route path='/profile' element={<UserProfile/>} />
