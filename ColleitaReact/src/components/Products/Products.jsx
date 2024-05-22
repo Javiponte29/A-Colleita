@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/authContext";
+import Modal from "../Modal";
 
 const Products = () => {
+    const { user } = useAuth();
     const [productos, setProductos] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [selectedCategory, setSelectedCategory] = useState('All');
     const [searchTerm, setSearchTerm] = useState('');
+    const [showModal, setShowModal] = useState(false);
+    const navigate = useNavigate();
     const productsPerPage = 9;
 
     useEffect(() => {
@@ -43,6 +48,14 @@ const Products = () => {
         setSearchTerm(event.target.value);
     };
 
+    const handleViewProduct = (productId) => {
+        if (!user) {
+            setShowModal(true);
+        } else {
+            navigate(`/product/${productId}`);
+        }
+    };
+
     return (
         <main>
             <header className="flex flex-col items-center">
@@ -56,11 +69,13 @@ const Products = () => {
                 {currentProducts.map(producto => (
                     <div key={producto.id} className='bg-gray-100 m-10 rounded-xl w-96 flex flex-col justify-between'>
                         <div>
-                            <Link to={`/product/${producto.id}`}><img className='rounded-t-xl h-60 w-96' src={producto.imagen} alt={producto.nombre} /></Link>
+                            <button onClick={() => handleViewProduct(producto.id)}>
+                                <img className='rounded-t-xl h-60 w-96' src={producto.imagen} alt={producto.nombre} />
+                            </button>
                             <h3 className='text-3xl font-medium m-5'>{producto.nombre}</h3>
-                            <Link to={`/product/${producto.id}`} className='text-2xl font-semibold text-white bg-verde2 rounded-b-xl flex justify-center p-2'>
+                            <button onClick={() => handleViewProduct(producto.id)} className='text-2xl font-semibold text-white bg-verde2 rounded-b-xl flex justify-center p-2 w-full'>
                                 Ver Producto
-                            </Link>
+                            </button>
                         </div>
                     </div>
                 ))}
@@ -80,8 +95,10 @@ const Products = () => {
                     </ul>
                 </nav>
             </section>
+            <Modal show={showModal} handleClose={() => setShowModal(false)} />
         </main>
     );
 };
 
 export default Products;
+
