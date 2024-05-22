@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 const ViewProduct = () => {
     const [producto, setProducto] = useState(null);
     const [loading, setLoading] = useState(true);  // Estado para manejar la carga
+    const [cantidad, setCantidad] = useState(1);   // Estado para manejar la cantidad
     const { id } = useParams();
 
     useEffect(() => {
@@ -25,6 +26,18 @@ const ViewProduct = () => {
             });
     }, [id]);
 
+    const incrementarCantidad = () => {
+        if (cantidad < 4) {
+            setCantidad(cantidad + 1);
+        }
+    };
+
+    const decrementarCantidad = () => {
+        if (cantidad > 1) {
+            setCantidad(cantidad - 1);
+        }
+    };
+
     if (loading) {
         return <div>Loading...</div>;
     }
@@ -34,16 +47,29 @@ const ViewProduct = () => {
     }
 
     return (
-        <main className="flex flex-col items-center">
-            <div className="bg-gray-100 m-10 rounded-xl w-96 flex flex-col justify-between">
-                <img className="rounded-t-xl h-60 w-96" src={producto.imagen} alt={producto.nombre} />
+        <main className="flex">
+            <img className="w-1/2" src={producto.imagen} alt={producto.nombre} />
+            <section className="flex flex-col ml-10">
                 <h3 className="text-3xl font-medium m-5">{producto.nombre}</h3>
-                <p className="text-xl m-5">{producto.descripcion}</p>
-                <p className="text-2xl font-semibold m-5 text-verde2">${producto.precio}</p>
-            </div>
+                <section className="bg-pr rounded-xl w-96 flex flex-col justify-between">
+                    <p className="text-2xl font-semibold m-5 text-verde2">{producto.precio}€</p>
+                    <div className="flex items-center justify-center m-5">
+                    <button 
+                        onClick={decrementarCantidad} 
+                        className="bg-verde text-white px-4 py-2 rounded-l">
+                        -
+                    </button>
+                    <span className="mx-4 text-xl">{cantidad}</span>
+                    <button 
+                        onClick={incrementarCantidad} 
+                        className="bg-verde text-white px-4 py-2 rounded-r">
+                        +
+                    </button>
+                    </div>
+                </section>
+            </section>
         </main>
     );
 };
 
 export default ViewProduct;
-

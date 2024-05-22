@@ -44,16 +44,14 @@ const Products = () => {
     };
 
     return (
-        <div>
-            <div className="flex justify-center mb-4">
-                <input
-                    type="text"
-                    placeholder="Buscar producto..."
-                    value={searchTerm}
-                    onChange={handleSearch}
-                    className="border border-gray-300 rounded-md px-4 py-2 w-64"
-                />
-            </div>
+        <main>
+            <header className="flex flex-col items-center">
+                <h1 className="text-4xl verde font-bold mb-4">Nuestros productos</h1>
+                <section className="flex items-center">
+                    <h2 className="text-2xl font-medium pr-2">Buscar:</h2>
+                    <input type="text" placeholder="Buscar producto..." value={searchTerm} onChange={handleSearch} className="border border-gray-300 rounded-md px-4 py-2 w-64"/>
+                </section>
+            </header>
             <aside className='flex flex-wrap justify-center'>
                 {currentProducts.map(producto => (
                     <div key={producto.id} className='bg-gray-100 m-10 rounded-xl w-96 flex flex-col justify-between'>
@@ -67,7 +65,7 @@ const Products = () => {
                     </div>
                 ))}
             </aside>
-            <div className='flex justify-center mt-4'>
+            <section className='flex justify-center mt-4'>
                 <nav>
                     <ul className='pagination flex'>
                         {pageNumbers.map(number => (
@@ -81,8 +79,8 @@ const Products = () => {
                         ))}
                     </ul>
                 </nav>
-            </div>
-        </div>
+            </section>
+        </main>
     );
 };
 
