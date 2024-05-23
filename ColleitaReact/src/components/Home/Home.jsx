@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
 import './Home.css';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/authContext'; // Asegúrate de importar el contexto de autenticación
 
 const Home = () => {
     const [productos, setProductos] = useState([]);
     const [showWelcomeMessage, setShowWelcomeMessage] = useState(false);
     const { user } = useAuth(); // Obtén el usuario autenticado del contexto
+    const navigate = useNavigate(); // Hook para navegar
 
     useEffect(() => {
         fetch(`http://localhost:8080/cont/list`)
@@ -14,7 +15,6 @@ const Home = () => {
             .then((result) => {
                 setProductos(result);
             });
-        console.log(productos);
     }, []);
 
     useEffect(() => {
@@ -22,10 +22,18 @@ const Home = () => {
             setShowWelcomeMessage(true);
             const timer = setTimeout(() => {
                 setShowWelcomeMessage(false);
-            }, 2000); // Oculta el mensaje después de 3 segundos
+            }, 2000); // Oculta el mensaje después de 2 segundos
             return () => clearTimeout(timer);
         }
     }, [user]);
+
+    const handleViewProduct = (productId) => {
+        if (!user) {
+            setShowModal(true);
+        } else {
+            navigate(`/product/${productId}`);
+        }
+    };
 
     return (
         <div>
@@ -38,22 +46,22 @@ const Home = () => {
                 <h2 className='text-4xl font-bold text-white w-80 ml-20 mb-10 pt-10'>
                     Tus frutas y verduras favoritas en la misma web.
                 </h2>
-                <NavLink to={''} className={'pb-2 pt-2 pl-4 pr-4 text-2xl text-white font-semibold bg-verde bg-opacity-50 rounded ml-20'}>
+                <NavLink to={'/products'} className={'pb-2 pt-2 pl-4 pr-4 text-2xl text-white font-semibold bg-verde bg-opacity-50 rounded ml-20'}>
                     ¡Compra aquí!
                 </NavLink>
             </div>
             <div className='flex flex-col md:flex-row'>
                 {productos.slice(8, 11).map(producto => (
                     <div key={producto.id} className='bg-gray-100 m-10 rounded-xl'>
-                        <Link to={`/${producto.id}`}>
-                            <img className='rounded-t-xl' src={producto.imagen} alt={producto.nombre} />
-                            <h3 className='text-3xl font-medium m-5'>{producto.nombre}</h3>
-                            <h3 className='text-2xl font-bold ml-5'>Dirección:</h3>
-                            <h4 className='text-2xl ml-5 mt-2 mb-4'>{producto.direccion}</h4>
-                            <Link to={''} className='text-2xl font-semibold text-white bg-verde2 rounded-b-xl flex justify-center p-2'>
-                                Ver Producto
-                            </Link>
-                        </Link>
+                        <img className='rounded-t-xl' src={producto.imagen} alt={producto.nombre} />
+                        <h3 className='text-3xl font-medium m-5'>{producto.nombre}</h3>
+                        <h3 className='text-2xl font-bold ml-5'>Dirección:</h3>
+                        <h4 className='text-2xl ml-5 mt-2 mb-4'>{producto.direccion}</h4>
+                        <button 
+                            onClick={() => handleViewProduct(producto.id)} 
+                            className='w-full text-2xl font-semibold text-white bg-verde2 rounded-b-xl flex justify-center p-2'>
+                            Ver Producto
+                        </button>
                     </div>
                 ))}
             </div>
@@ -74,3 +82,4 @@ const Home = () => {
 };
 
 export default Home;
+

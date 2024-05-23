@@ -14,6 +14,16 @@ import ViewProduct from './components/ViewProduct';
 
 function App() {
     const [productos, setProductos] = useState([]);
+    const [cart, setCart] = useState([]);
+
+    const addToCart = (product) => {
+        setCart([...cart, product]);
+    };
+
+    const removeFromCart = (productIndex) => {
+        setCart(cart.filter((_, index) => index !== productIndex));
+    };
+
     useEffect(() => {
         fetch(`http://localhost:8080/cont/list`)
         .then(response => response.json())
@@ -35,10 +45,10 @@ function App() {
                         <Route path='/' element={<Navigate to={"/home"} />} />
                         <Route path='/home' element={<Home />} />
                         <Route path='/products' element={<Products />} />
-                        <Route path='/product/:id' element={<ViewProduct />} />
+                        <Route path='/product/:id' element={<ViewProduct addToCart={addToCart}/>} />
                         <Route path='/login' element={<Login />} />
                         <Route path='/register' element={<Register/>} />
-                        <Route path='/profile' element={<UserProfile/>} />
+                        <Route path='/profile' element={<UserProfile cart={cart} removeFromCart={removeFromCart}/>} />
                         <Route path='/aboutus' element={<AboutUs/>} />
                     </Routes>
                     <Footer />
