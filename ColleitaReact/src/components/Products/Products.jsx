@@ -68,16 +68,20 @@ const Products = () => {
             <section className='flex flex-wrap justify-center'>
                 {currentProducts.map(producto => (
                     <section key={producto.id} className='bg-gray-100 m-10 rounded-xl w-96 flex flex-col justify-between'>
-                        <aside>
-                            <button onClick={() => handleViewProduct(producto.id)}>
-                                <img className='rounded-t-xl h-60 w-96' src={producto.imagen} alt={producto.nombre} />
-                            </button>
-                            <h3 className='text-3xl font-medium m-5'>{producto.nombre}</h3>
-                            <button title={producto.nombre} onClick={() => handleViewProduct(producto.id)} className='text-2xl font-semibold text-white bg-verde2 rounded-b-xl flex justify-center p-2 w-full'>
-                                Ver Producto
-                            </button>
-                        </aside>
-                    </section>
+                    <aside>
+                        <button onClick={() => handleViewProduct(producto.id)}>
+                            <img className='rounded-t-xl h-60 w-96' src={producto.imagen} alt={producto.nombre} title={producto.nombre} />
+                        </button>
+                        <section className="flex justify-between items-center m-5">
+                            <h3 className='text-3xl font-medium'>{producto.nombre}</h3>
+                            <p className="text-2xl font-semibold">{producto.precio}€</p>
+                        </section>
+                    </aside>
+                    <button title={producto.nombre} onClick={() => handleViewProduct(producto.id)} className='text-2xl font-semibold text-white bg-verde2 rounded-b-xl flex justify-center p-2 w-full'>
+                        Ver Producto
+                    </button>
+                </section>
+                
                 ))}
             </section>
             <section className='flex justify-center mt-4'>

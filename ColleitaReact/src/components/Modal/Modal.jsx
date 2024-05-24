@@ -2,7 +2,8 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const Modal = ({ show, handleClose }) => {
-    const navigate = useNavigate();
+    // Hook para navegar entre rutas
+    const navigate = useNavigate(); 
 
     if (!show) {
         return null;

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useAuth } from "../../context/authContext";
 import { useNavigate } from "react-router-dom";
+import ViewProduct from "../ViewProduct/ViewProduct";
 
 const UserProfile = ({ cart, removeFromCart }) => {
     const { user, logout } = useAuth();
@@ -50,23 +51,20 @@ const UserProfile = ({ cart, removeFromCart }) => {
                         <p>El carrito está vacío</p>
                     ) : (
                         cart.map((product, index) => (
-                            <div key={index} className="bg-white shadow rounded-lg p-4 mb-4">
-                                <div className="flex items-center space-x-4">
+                            <section key={index} className="bg-white shadow rounded-lg p-4 mb-4">
+                                <section className="flex items-center space-x-4">
                                     <img src={product.imagen} alt={product.nombre} className="w-16 h-16 rounded" />
-                                    <div>
+                                    <aside>
                                         <h3 className="text-lg font-medium">{product.nombre}</h3>
                                         <p className="text-gray-600">{product.descripcion}</p>
-                                        <p className="text-gray-800 font-bold">${product.precio}</p>
+                                        <p className="text-gray-800 font-bold">{product.precio}€</p>
                                         <p className="text-gray-800">Cantidad: {product.cantidad}</p>
-                                        <button
-                                            onClick={() => removeFromCart(index)}
-                                            className="bg-red-500 text-white px-4 py-2 rounded mt-2"
-                                        >
+                                        <button onClick={() => removeFromCart(index)}className="bg-red-500 text-white px-4 py-2 rounded mt-2">
                                             Eliminar
                                         </button>
-                                    </div>
-                                </div>
-                            </div>
+                                    </aside>
+                                </section>
+                            </section>
                         ))
                     )}
                 </aside>

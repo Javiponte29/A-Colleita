@@ -57,24 +57,32 @@ const ViewProduct = ({ addToCart }) => {
     }
 
     return (
-        <main className="flex flex-col items-center">
-            <img className="w-1/2" src={producto.imagen} alt={producto.nombre} />
-            <section className="flex flex-col ml-10">
-                <h3 className="text-3xl font-medium m-5">{producto.nombre}</h3>
-                <section className="bg-pr rounded-xl w-96 flex flex-col justify-between">
-                    <p className="text-2xl font-semibold m-5 text-verde2">{producto.precio}€</p>
+        <main className="m-5">
+            <section className="flex m-10 items-center flex-col lg:flex-row">
+            <img title={producto.nombre} className="tam" src={producto.imagen} alt={producto.nombre} />
+            <aside className="flex flex-col ml-10">
+                <h3 title={producto.nombre} className="text-3xl font-medium m-5">{producto.nombre}</h3>
+                <section className="bg-pr rounded-xl w-96 flex flex-col">
+                    <aside className="flex justify-between items-center ml-4 mr-4">
+                    <p className="text-xl font-medium flex items-center" title="valoración">Valoración: {producto.valoracion}<img className="w-4 ml-1" src="https://www.svgrepo.com/show/452106/star.svg" alt="Estrella" /></p>
+                    <p title="Precio" className="text-2xl font-semibold m-5 text-verde2">{producto.precio}€</p>
+                    </aside>
+                    <p className="m-4 text-xl font-medium">Dirección: {producto.direccion}</p>
                     <div className="flex items-center justify-center m-5">
-                        <button onClick={decrementarCantidad} className="bg-verde text-white px-4 py-2 rounded-l">-</button>
-                        <span className="mx-4 text-xl">{cantidad}</span>
-                        <button onClick={incrementarCantidad} className="bg-verde text-white px-4 py-2 rounded-r">+</button>
+                        <button title="sumar" onClick={decrementarCantidad} className="bg-verde text-white px-4 py-2 rounded-l">-</button>
+                        <span title="Cantidad" className="mx-4 text-xl">{cantidad}</span>
+                        <button title="restar" onClick={incrementarCantidad} className="bg-verde text-white px-4 py-2 rounded-r">+</button>
                     </div>
+                    <button title="Añadir al carrito" onClick={handleAddToCart} className="bg-verde2 text-white px-4 py-2 rounded-xl m-4">Añadir al Carrito</button>
                 </section>
-                <button onClick={handleAddToCart} className="bg-verde2 text-white px-4 py-2 rounded mt-4">
-                    Añadir al Carrito
-                </button>
                 {confirmationMessage && (
                     <p className="mt-4 text-green-500">{confirmationMessage}</p>
                 )}
+            </aside>
+            </section>
+            <section className="flex flex-col text-left mr-6 ml-6 lg:mr-32 lg:ml-32">
+                <h2 className="text-2xl font-bold bg-des p-5">Descripción</h2>
+                <p className="text-xl bg-desc p-6">{producto.descripcion}</p>
             </section>
         </main>
     );
