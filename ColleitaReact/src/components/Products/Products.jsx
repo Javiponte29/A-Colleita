@@ -65,21 +65,21 @@ const Products = () => {
                     <input type="text" placeholder="Buscar producto..." value={searchTerm} onChange={handleSearch} className="border border-gray-300 rounded-md px-4 py-2 w-64"/>
                 </section>
             </header>
-            <aside className='flex flex-wrap justify-center'>
+            <section className='flex flex-wrap justify-center'>
                 {currentProducts.map(producto => (
-                    <div key={producto.id} className='bg-gray-100 m-10 rounded-xl w-96 flex flex-col justify-between'>
-                        <div>
+                    <section key={producto.id} className='bg-gray-100 m-10 rounded-xl w-96 flex flex-col justify-between'>
+                        <aside>
                             <button onClick={() => handleViewProduct(producto.id)}>
                                 <img className='rounded-t-xl h-60 w-96' src={producto.imagen} alt={producto.nombre} />
                             </button>
                             <h3 className='text-3xl font-medium m-5'>{producto.nombre}</h3>
-                            <button onClick={() => handleViewProduct(producto.id)} className='text-2xl font-semibold text-white bg-verde2 rounded-b-xl flex justify-center p-2 w-full'>
+                            <button title={producto.nombre} onClick={() => handleViewProduct(producto.id)} className='text-2xl font-semibold text-white bg-verde2 rounded-b-xl flex justify-center p-2 w-full'>
                                 Ver Producto
                             </button>
-                        </div>
-                    </div>
+                        </aside>
+                    </section>
                 ))}
-            </aside>
+            </section>
             <section className='flex justify-center mt-4'>
                 <nav>
                     <ul className='pagination flex'>

@@ -38,8 +38,8 @@ const Register = () => {
     }
 
     return (
-        <div className="bg-lr min-h-screen flex justify-center">
-            <div className='bg-black bg-opacity-30 h-96 pt-6 rounded-xl w-96 flex flex-col mt-20'>
+        <main className="bg-lr min-h-screen flex justify-center">
+            <section className='bg-black bg-opacity-30 h-96 pt-6 rounded-xl w-96 flex flex-col mt-20'>
             <h1 className="text-4xl text-white font-bold text-center mb-3">Register</h1>
                 <form onSubmit={handleSubmit} className="flex flex-col items-center justify-around h-72">
                     {error && <p>{error}</p>}
@@ -48,8 +48,8 @@ const Register = () => {
                     <p className="text-white">¿Ya tienes cuenta? <Link to={'/login'} className="underline">Inicia Sesión</Link>.</p>
                     <button className="bg-verde text-white w-60 h-12">Registrarse</button>
                 </form>
-            </div>
-        </div>
+            </section>
+        </main>
     );
 
 };
