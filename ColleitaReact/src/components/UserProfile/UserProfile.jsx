@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useAuth } from "../../context/authContext";
 import { useNavigate } from "react-router-dom";
-import ViewProduct from "../ViewProduct/ViewProduct";
 
 const UserProfile = ({ cart, removeFromCart }) => {
     const { user, logout } = useAuth();
@@ -15,6 +14,10 @@ const UserProfile = ({ cart, removeFromCart }) => {
     const handleLogout = async () => {
         await logout();
         navigate("/");
+    };
+
+    const getTotalPrice = () => {
+        return cart.reduce((total, product) => total + product.totalPrice, 0);
     };
 
     return (
@@ -46,26 +49,37 @@ const UserProfile = ({ cart, removeFromCart }) => {
                     <button onClick={toggleSidebar} className="bg-verde2 text-white px-4 py-2 rounded hover:border-green-400 focus:outline-none">Abrir Menú</button>
                 </aside>
                 <aside className="p-4 flex-grow">
-                    <h2 className="text-3xl font-semibold mb-4 "><svg class="h-8 w-8 "  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <circle cx="9" cy="19" r="2" />  <circle cx="17" cy="19" r="2" />  <path d="M3 3h2l2 12a3 3 0 0 0 3 2h7a3 3 0 0 0 3 -2l1 -7h-15.2" /></svg>Carrito de Compras</h2>
+                    <h2 className="text-3xl font-semibold mb-4 ">
+                        <svg className="h-8 w-8" width="24" height="24" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z"/>
+                            <circle cx="9" cy="19" r="2" />
+                            <circle cx="17" cy="19" r="2" />
+                            <path d="M3 3h2l2 12a3 3 0 0 0 3 2h7a3 3 0 0 0 3 -2l1 -7h-15.2" />
+                        </svg>
+                        Carrito de Compras
+                    </h2>
                     {cart.length === 0 ? (
                         <p>El carrito está vacío</p>
                     ) : (
-                        cart.map((product, index) => (
-                            <section key={index} className="bg-white shadow rounded-lg p-4 mb-4">
-                                <section className="flex items-center space-x-4">
-                                    <img src={product.imagen} alt={product.nombre} className="w-16 h-16 rounded" />
-                                    <aside>
-                                        <h3 className="text-lg font-medium">{product.nombre}</h3>
-                                        <p className="text-gray-600">{product.descripcion}</p>
-                                        <p className="text-gray-800 font-bold">{product.precio}€</p>
-                                        <p className="text-gray-800">Cantidad: {product.cantidad}</p>
-                                        <button onClick={() => removeFromCart(index)}className="bg-red-500 text-white px-4 py-2 rounded mt-2">
-                                            Eliminar
-                                        </button>
-                                    </aside>
-                                </section>
-                            </section>
-                        ))
+                        <div>
+                            {cart.map((product, index) => (
+                                <div key={index} className="flex items-center justify-between py-2 border-b">
+                                    <div className="flex items-center space-x-4">
+                                        <img src={product.imagen} alt={product.nombre} className="w-16 h-16 rounded" />
+                                        <div>
+                                            <h3 className="text-lg font-medium">{product.nombre}</h3>
+                                            <p className="text-gray-600">Cantidad: {product.cantidad}</p>
+                                        </div>
+                                    </div>
+                                    <p className="font-semibold">{product.totalPrice.toFixed(2)}€</p>
+                                    <button onClick={() => removeFromCart(index)} className="text-red-500">Eliminar</button>
+                                </div>
+                            ))}
+                            <div className="flex justify-between mt-4">
+                                <p className="text-xl font-semibold">Total:</p>
+                                <p className="text-xl font-semibold">{getTotalPrice().toFixed(2)}€</p>
+                            </div>
+                        </div>
                     )}
                 </aside>
             </section>
@@ -74,4 +88,6 @@ const UserProfile = ({ cart, removeFromCart }) => {
 };
 
 export default UserProfile;
+
+
 

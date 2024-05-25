@@ -17,11 +17,22 @@ function App() {
     const [cart, setCart] = useState([]);
 
     const addToCart = (product) => {
-        setCart([...cart, product]);
+        setCart((prevCart) => {
+            const productIndex = prevCart.findIndex(item => item.id === product.id);
+            if (productIndex !== -1) {
+                const updatedCart = [...prevCart];
+                updatedCart[productIndex].cantidad += product.cantidad;
+                updatedCart[productIndex].totalPrice = updatedCart[productIndex].cantidad * updatedCart[productIndex].precio;
+                return updatedCart;
+            } else {
+                const newProduct = { ...product, totalPrice: product.cantidad * product.precio };
+                return [...prevCart, newProduct];
+            }
+        });
     };
 
-    const removeFromCart = (productIndex) => {
-        setCart(cart.filter((_, index) => index !== productIndex));
+    const removeFromCart = (index) => {
+        setCart((prevCart) => prevCart.filter((_, i) => i !== index));
     };
 
     useEffect(() => {
