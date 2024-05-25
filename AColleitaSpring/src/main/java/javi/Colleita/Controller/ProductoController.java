@@ -12,6 +12,7 @@ import javi.Colleita.services.IProductoService;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
@@ -32,5 +33,18 @@ public class ProductoController {
         return pSer.findByID(id);
     }
     
-    
+    @PostMapping("/cart/add")
+    public void addToCart(@RequestParam Integer id, @RequestParam Integer cantidad) {
+        pSer.addProductToCart(id, cantidad);
+    }
+
+    @GetMapping("/cart")
+    public List<Producto> getCart() {
+        return pSer.getCart();
+    }
+
+    @GetMapping("/cart/total")
+    public double getCartTotal() {
+        return pSer.getCartTotal();
+    }
 }

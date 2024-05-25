@@ -98,4 +98,4 @@ mercado! Seleccionados cuidadosamente de los mejores huertos, nuestros aguacates
 sentidos.', 'https://common.crowdfarming.com/uploaded-images/1644409160873-2583bf21-f45a-469c-b1b4-bcc112542add.jpg'),
 (33, 'Vino Blanco', 4, 'Caldas de Reis, Pontevedra', 7, 10, 4, 'Descubre la frescura y la elegancia del Vino Blanco Pedralonga, 
 una verdadera joya vinícola que captura la esencia de la región y su clima privilegiado. Proveniente de los viñedos más selectos y elaborado 
-con dedicación por expertos enólogos, este vino blanco es una expresión única de la tradición y la calidad.', 'https://www.akatavino.es/wp-content/uploads/Pedralonga-Vendetta-2021-%C2%A9-AkataVino-1.jpg');
+con dedicación por expertos enólogos, este vino blanco es una expresión única de la tradición y la calidad.', 'https://www.autenticoscyl.com/media/2020/12/chapirete-0.jpg');
