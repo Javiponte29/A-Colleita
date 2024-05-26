@@ -4,23 +4,29 @@ import { useState, useEffect } from 'react';
 import { useAuth } from '../../context/authContext';
 
 const NavBar = () => {
-    const [productos, setProductos] = useState([]);
-    const { user } = useAuth();
+// Almacena la lista de productos
+const [productos, setProductos] = useState([]);
+// Obtiene el usuario actual
+const { user } = useAuth();
 
-    useEffect(() => {
-        fetch(`http://localhost:8080/cont/list`)
+// Hook para cargar la lista de productos
+useEffect(() => {
+    fetch(`http://localhost:8080/cont/list`)
         .then(response => response.json())
         .then((result) => {
             setProductos(result);
         });
-        console.log(productos);
-    }, []);
+    console.log(productos);
+}, []);
 
-    const [isOpen, setIsOpen] = useState(false);
+// Controla si el menú está abierto o cerrado
+const [isOpen, setIsOpen] = useState(false);
 
-    const toggleMenu = () => {
-        setIsOpen(!isOpen);
-    };
+// Alterna la visibilidad del menú
+const toggleMenu = () => {
+    setIsOpen(!isOpen);
+};
+
 
     return (
         <main className="flex flex-col lg:flex-row items-center justify-around border-b-2 shadow-lg pb-4">

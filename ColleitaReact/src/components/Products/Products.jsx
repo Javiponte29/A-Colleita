@@ -4,57 +4,70 @@ import { useAuth } from "../../context/authContext";
 import Modal from "../Modal";
 
 const Products = () => {
-    const { user } = useAuth();
-    const [productos, setProductos] = useState([]);
-    const [currentPage, setCurrentPage] = useState(1);
-    const [selectedCategory, setSelectedCategory] = useState('All');
-    const [searchTerm, setSearchTerm] = useState('');
-    const [showModal, setShowModal] = useState(false);
-    const navigate = useNavigate();
-    const productsPerPage = 9;
+// Usuario actual
+const { user } = useAuth();
+// Almacena la lista de productos
+const [productos, setProductos] = useState([]);
+// Almacena el número de página actual
+const [currentPage, setCurrentPage] = useState(1);
+// Almacena el término de búsqueda
+const [searchTerm, setSearchTerm] = useState('');
+// Controla la visibilidad del modal
+const [showModal, setShowModal] = useState(false);
 
-    useEffect(() => {
-        fetch(`http://localhost:8080/cont/list`)
-            .then(response => response.json())
-            .then((result) => {
-                console.log("Productos:", result);
-                setProductos(result);
-            })
-            .catch((error) => {
-                console.error("Error al obtener productos:", error);
-            });
-    }, []);
+const navigate = useNavigate();
+// Número de productos por página
+const productsPerPage = 9;
 
-    const filteredProducts = selectedCategory === 'All'
-        ? productos
-        : productos.filter(producto => producto.categoria === selectedCategory);
+// Hook para cargar la lista de productos
+useEffect(() => {
+    fetch(`http://localhost:8080/cont/list`)
+        .then(response => response.json())
+        .then((result) => {
+            console.log("Productos:", result);
+            setProductos(result);
+        })
+        .catch((error) => {
+            console.error("Error al obtener productos:", error);
+        });
+}, []);
 
-    const filteredAndSearchedProducts = filteredProducts.filter(producto =>
-        producto.nombre.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+// Filtra los productos por el término de búsqueda
+const filteredProducts = productos.filter(producto =>
+    producto.nombre.toLowerCase().includes(searchTerm.toLowerCase())
+);
 
-    const indexOfLastProduct = currentPage * productsPerPage;
-    const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-    const currentProducts = filteredAndSearchedProducts.slice(indexOfFirstProduct, indexOfLastProduct);
+// Calcula los índices del primer y último producto en la página actual
+const indexOfLastProduct = currentPage * productsPerPage;
+const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+// Productos mostrados en la página actual
+const currentProducts = filteredProducts.slice(indexOfFirstProduct, indexOfLastProduct);
 
-    const pageNumbers = [];
-    for (let i = 1; i <= Math.ceil(filteredAndSearchedProducts.length / productsPerPage); i++) {
-        pageNumbers.push(i);
+// Calcula el número de páginas
+const pageNumbers = [];
+for (let i = 1; i <= Math.ceil(filteredProducts.length / productsPerPage); i++) {
+    pageNumbers.push(i);
+}
+
+// Cambiar a una página específica
+const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+// Evento de búsqueda
+const handleSearch = (event) => {
+    setSearchTerm(event.target.value);
+};
+
+// Visualización de un producto específico
+const handleViewProduct = (productId) => {
+    // Si el usuario no ha iniciado sesión, muestra el modal
+    if (!user) {
+        setShowModal(true);
+    } else {
+        // Si el usuario ha iniciado sesión, navega a la página del producto
+        navigate(`/product/${productId}`);
     }
+};
 
-    const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
-    const handleSearch = (event) => {
-        setSearchTerm(event.target.value);
-    };
-
-    const handleViewProduct = (productId) => {
-        if (!user) {
-            setShowModal(true);
-        } else {
-            navigate(`/product/${productId}`);
-        }
-    };
 
     return (
         <main>

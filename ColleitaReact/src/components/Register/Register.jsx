@@ -5,37 +5,44 @@ import { Link, useNavigate } from "react-router-dom";
 
 const Register = () => {
 
-    const [user, setUser] = useState({
-        email: "",
-        password: "",
-    });
+// Almacenar datos del usuario
+const [user, setUser] = useState({
+    email: "",
+    password: "",
+});
 
-    const { signup } = useAuth();
+// Hook para acceder a la función de registro
+const { signup } = useAuth();
 
-    const navigate = useNavigate();
-    const [error, setError] = useState();
+const navigate = useNavigate();
 
-    const handleChange = ({target: {name, value}}) => {
-        setUser({...user, [name]: value})
-    };
+// Almacenar mensajes de error
+const [error, setError] = useState();
 
-    const handleSubmit = async e => {
-        e.preventDefault()
-        setError('');
-        try {
-            await signup(user.email, user.password);
-            navigate('/');
-        } catch (error) {
-            console.log(error.code);
-            if (error.code === "auth/missing-password") {
-                setError('Te falta la contraseña');
-            } 
-            if (error.code === "auth/email-already-in-use") {
-                setError('Correo ya registrado');
-            }
-            setError(error.message);
+// Manejar cambios en los campos de entrada
+const handleChange = ({ target: { name, value } }) => {
+    setUser({ ...user, [name]: value });
+};
+
+// Manejar el envío del formulario de registro
+const handleSubmit = async e => {
+    e.preventDefault();
+    setError(''); // Limpiar mensajes de error
+    try {
+        await signup(user.email, user.password);
+        navigate('/');
+    } catch (error) {
+        console.log(error.code);
+        if (error.code === "auth/missing-password") {
+            setError('Te falta la contraseña');
+        } 
+        if (error.code === "auth/email-already-in-use") {
+            setError('Correo ya registrado');
         }
+        setError(error.message);
     }
+}
+
 
     return (
         <main className="bg-lr min-h-screen flex justify-center">

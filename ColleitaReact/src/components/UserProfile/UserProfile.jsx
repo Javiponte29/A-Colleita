@@ -4,38 +4,45 @@ import { useNavigate } from "react-router-dom";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
 const UserProfile = ({ cart, removeFromCart }) => {
-    const { user, logout } = useAuth();
-    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-    const navigate = useNavigate();
+// Obtiene el usuario actual y la función de cierre de sesión
+const { user, logout } = useAuth();
+// Controlar si la barra lateral está abierta o cerrada
+const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+// Cambiar el estado de la barra lateral
+const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+};
 
-    const toggleSidebar = () => {
-        setIsSidebarOpen(!isSidebarOpen);
-    };
+const navigate = useNavigate();
 
-    const handleLogout = async () => {
-        await logout();
-        navigate("/");
-    };
+// Maneja el cierre de sesión del usuario
+const handleLogout = async () => {
+    await logout(); // Función de cierre de sesión
+    navigate("/"); // Redirige al usuario a la página de inicio
+};
 
-    const getTotalPrice = () => {
-        return cart.reduce((total, product) => total + product.totalPrice, 0);
-    };
+// Calcular el precio total del carrito sumando los precios de los productos
+const getTotalPrice = () => {
+    return cart.reduce((total, product) => total + product.totalPrice, 0);
+};
 
-    const createOrder = (data, actions) => {
-        return actions.order.create({
-            purchase_units: [{
-                amount: {
-                    value: getTotalPrice().toFixed(2) // Total del carrito
-                }
-            }]
-        });
-    };
+const createOrder = (data, actions) => {
+    return actions.order.create({
+        purchase_units: [{
+            amount: {
+                value: getTotalPrice().toFixed(2)
+            }
+        }]
+    });
+};
 
-    const onApprove = (data, actions) => {
-        return actions.order.capture().then(details => {
-            alert("Transacción completada por " + details.payer.name.given_name);
-        });
-    };
+// Se ejecuta cuando se aprueba una transacción de PayPal
+const onApprove = (data, actions) => {
+    return actions.order.capture().then(details => {
+        alert("Transacción completada por " + details.payer.name.given_name); // Mensaje de alerta con el nombre del pagador
+    });
+};
+
 
     return (
         <main className="min-h-screen bg-gray-100 flex">
