@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useAuth } from "../../context/authContext";
 import { useNavigate } from "react-router-dom";
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
 const UserProfile = ({ cart, removeFromCart }) => {
     const { user, logout } = useAuth();
@@ -18,6 +19,23 @@ const UserProfile = ({ cart, removeFromCart }) => {
 
     const getTotalPrice = () => {
         return cart.reduce((total, product) => total + product.totalPrice, 0);
+    };
+
+    const createOrder = (data, actions) => {
+        return actions.order.create({
+            purchase_units: [{
+                amount: {
+                    value: getTotalPrice().toFixed(2) // Total del carrito
+                }
+            }]
+        });
+    };
+
+    const onApprove = (data, actions) => {
+        return actions.order.capture().then(details => {
+            alert("Transacción completada por " + details.payer.name.given_name);
+            // Aquí puedes manejar lo que ocurre después de la compra, como limpiar el carrito o registrar la compra en tu base de datos
+        });
     };
 
     return (
@@ -79,6 +97,14 @@ const UserProfile = ({ cart, removeFromCart }) => {
                                 <p className="text-xl font-semibold">Total:</p>
                                 <p className="text-xl font-semibold">{getTotalPrice().toFixed(2)}€</p>
                             </div>
+                            <div className="mt-4 flex justify-end">
+                                <PayPalScriptProvider options={{ "client-id": "AUFAdttEaKe3MIAsivRG26lrubNH00P9fao0Ax036kkF2oUQxBepnmfdlMS0uWMBzS8a1pYH34TSkdOy" }}>
+                                    <PayPalButtons
+                                        createOrder={createOrder}
+                                        onApprove={onApprove}
+                                    />
+                                </PayPalScriptProvider>
+                            </div>
                         </div>
                     )}
                 </aside>
@@ -88,6 +114,7 @@ const UserProfile = ({ cart, removeFromCart }) => {
 };
 
 export default UserProfile;
+
 
 
 
