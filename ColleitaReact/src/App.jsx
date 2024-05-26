@@ -13,39 +13,49 @@ import Products from './components/Products/Products';
 import ViewProduct from './components/ViewProduct';
 
 function App() {
-    const [productos, setProductos] = useState([]);
-    const [cart, setCart] = useState([]);
+// Almacenar la lista de productos
+const [productos, setProductos] = useState([]);
+// Almacenar los productos en el carrito
+const [cart, setCart] = useState([]);
 
-    const addToCart = (product) => {
-        setCart((prevCart) => {
-            const productIndex = prevCart.findIndex(item => item.id === product.id);
-            if (productIndex !== -1) {
-                const updatedCart = [...prevCart];
-                updatedCart[productIndex].cantidad += product.cantidad;
-                updatedCart[productIndex].totalPrice = updatedCart[productIndex].cantidad * updatedCart[productIndex].precio;
-                return updatedCart;
-            } else {
-                const newProduct = { ...product, totalPrice: product.cantidad * product.precio };
-                return [...prevCart, newProduct];
-            }
-        });
-    };
+// Agregar un producto al carrito
+const addToCart = (product) => {
+    setCart((prevCart) => {
+        // Busca si el producto está en el carrito
+        const productIndex = prevCart.findIndex(item => item.id === product.id);
+        if (productIndex !== -1) {
+            // Si el producto ya está en el carrito, actualiza su cantidad y precio total
+            const updatedCart = [...prevCart];
+            updatedCart[productIndex].cantidad += product.cantidad;
+            updatedCart[productIndex].totalPrice = updatedCart[productIndex].cantidad * updatedCart[productIndex].precio;
+            return updatedCart;
+        } else {
+            // Si el producto no está en el carrito, lo agrega como un nuevo producto
+            const newProduct = { ...product, totalPrice: product.cantidad * product.precio };
+            return [...prevCart, newProduct];
+        }
+    });
+};
 
-    const removeFromCart = (index) => {
-        setCart((prevCart) => prevCart.filter((_, i) => i !== index));
-    };
+// Función para eliminar un producto del carrito basado en su índice
+const removeFromCart = (index) => {
+    setCart((prevCart) => prevCart.filter((_, i) => i !== index));
+};
 
-    useEffect(() => {
-        fetch(`http://localhost:8080/cont/list`)
-        .then(response => response.json())
-        .then((result) => {
-            console.log(result);
-            setProductos(result);
-        })
-        .catch(error => {
-            console.error('Error al obtener los productos:', error);
-        });
-    }, []);
+// Hook para cargar la lista de productos
+useEffect(() => {
+    fetch(`http://localhost:8080/cont/list`)
+    .then(response => response.json())
+    .then((result) => {
+        // Si se obtienen los datos, se actualiza el estado de productos
+        console.log(result);
+        setProductos(result);
+    })
+    .catch(error => {
+        console.error('Error al obtener los productos:', error);
+    });
+}, []);
+
 
     return (
         <Router>

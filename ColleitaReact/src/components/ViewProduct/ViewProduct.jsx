@@ -1,61 +1,79 @@
-// ViewProduct.js
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 const ViewProduct = ({ addToCart }) => {
-    const [producto, setProducto] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [cantidad, setCantidad] = useState(1);
-    const [confirmationMessage, setConfirmationMessage] = useState("");
-    const { id } = useParams();
+// Almacena el producto
+const [producto, setProducto] = useState(null);
+// Controla si la página está cargando
+const [loading, setLoading] = useState(true);
+// Almacena la cantidad de productos seleccionada por el usuario
+const [cantidad, setCantidad] = useState(1);
+// Muestra un mensaje de confirmación después de agregar un producto al carrito
+const [confirmationMessage, setConfirmationMessage] = useState("");
+// Obtiene el id del producto
+const { id } = useParams();
 
-    useEffect(() => {
-        fetch(`http://localhost:8080/cont/${id}`)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then((result) => {
-                console.log("Producto:", result);
-                setProducto(result);
-                setLoading(false);
-            })
-            .catch((error) => {
-                console.error("Error al obtener producto:", error);
-                setLoading(false);
-            });
-    }, [id]);
+// Carga los datos del producto desde el servidor
+useEffect(() => {
+    fetch(`http://localhost:8080/cont/${id}`)
+        .then(response => {
+            // Verifica si la respuesta de la red fue exitosa
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then((result) => {
+            // Se obtienen los datos del servidor y se actualiza el estado del producto
+            console.log("Producto:", result);
+            setProducto(result);
+            setLoading(false);
+        })
+        .catch((error) => {
+            // Por si hay un error en la consola
+            console.error("Error al obtener producto:", error);
+            setLoading(false);
+        });
+}, [id]);
 
-    const incrementarCantidad = () => {
-        if (cantidad < 4) {
-            setCantidad(cantidad + 1);
-        }
-    };
-
-    const decrementarCantidad = () => {
-        if (cantidad > 1) {
-            setCantidad(cantidad - 1);
-        }
-    };
-
-    const handleAddToCart = () => {
-        const productWithQuantity = { ...producto, cantidad };
-        addToCart(productWithQuantity);
-        setConfirmationMessage("Producto añadido al carrito correctamente.");
-        setTimeout(() => {
-            setConfirmationMessage("");
-        }, 2000);
-    };
-
-    if (loading) {
-        return <div>Loading...</div>;
+// Incrementar la cantidad de productos seleccionada
+const incrementarCantidad = () => {
+    if (cantidad < 4) {
+        setCantidad(cantidad + 1);
     }
+};
 
-    if (!producto) {
-        return <div>Error al cargar el producto</div>;
+// Decrementar la cantidad de productos seleccionada
+const decrementarCantidad = () => {
+    if (cantidad > 1) {
+        setCantidad(cantidad - 1);
     }
+};
+
+// Maneja la selección de un producto al carrito
+const handleAddToCart = () => {
+    // Crea un objeto que combina el producto con la cantidad seleccionada
+    const productWithQuantity = { ...producto, cantidad };
+    // Llama a la función addToCart para agregar el producto al carrito
+    addToCart(productWithQuantity);
+    // Establece un mensaje de confirmación
+    setConfirmationMessage("Producto en el perfil.");
+    // Limpia el mensaje de confirmación después de 2 segundos
+    setTimeout(() => {
+        setConfirmationMessage("");
+    }, 2000);
+};
+
+// Si la página está cargando, se muestra un mensaje de carga
+if (loading) {
+    return <div>Loading...</div>;
+}
+
+// Si no hay ningún producto cargado, se muestra un mensaje de error
+if (!producto) {
+    return <div>Error al cargar el producto</div>;
+}
+
 
     return (
         <main className="m-5">

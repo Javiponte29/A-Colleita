@@ -34,7 +34,6 @@ const UserProfile = ({ cart, removeFromCart }) => {
     const onApprove = (data, actions) => {
         return actions.order.capture().then(details => {
             alert("Transacción completada por " + details.payer.name.given_name);
-            // Aquí puedes manejar lo que ocurre después de la compra, como limpiar el carrito o registrar la compra en tu base de datos
         });
     };
 
