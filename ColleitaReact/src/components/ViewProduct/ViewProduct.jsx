@@ -89,7 +89,7 @@ if (!producto) {
                         <p className="m-4 text-xl font-medium">Dirección: {producto.direccion}</p>
                         <div className="flex items-center justify-center m-5">
                             <button title="sumar" onClick={decrementarCantidad} className="bg-verde text-white px-4 py-2 rounded-l">-</button>
-                            <span title="Cantidad" className="mx-4 text-xl">{cantidad}</span>
+                            <span title="Cantidad" className="mx-4 text-xl">{cantidad}kg/L</span>
                             <button title="restar" onClick={incrementarCantidad} className="bg-verde text-white px-4 py-2 rounded-r">+</button>
                         </div>
                         <button title="Añadir al carrito" onClick={handleAddToCart} className="bg-verde2 text-white px-4 py-2 rounded-xl m-4">Añadir al Carrito</button>
