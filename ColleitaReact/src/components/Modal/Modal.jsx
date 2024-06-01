@@ -16,7 +16,7 @@ const Modal = ({ show, handleClose }) => {
                 <p className="mb-4">Para ver los detalles del producto, por favor inicia sesión o regístrate.</p>
                 <aside className="flex justify-end">
                     <button
-                        className="bg-red-500 text-white px-4 py-2 rounded mr-2"
+                        className="bg-red-600 text-white px-4 py-2 rounded mr-2"
                         onClick={() => navigate('/login')}
                     >
                         Iniciar sesión

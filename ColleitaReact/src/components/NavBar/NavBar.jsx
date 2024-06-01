@@ -34,7 +34,7 @@ const toggleMenu = () => {
                 <NavLink to={"/"} title='Home'><img src="https://cdn-icons-png.flaticon.com/512/424/424227.png" alt="Logo" className="w-20 h-20" /></NavLink>
                 <NavLink to={"/"} title='Home' className="verde font-bold text-4xl">A Colleita</NavLink>
             </nav>
-            <button className="lg:hidden" onClick={toggleMenu}>
+            <button className="lg:hidden" onClick={toggleMenu} title='Menú Desplegable'>
                 <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
                 </svg>
