@@ -13,8 +13,17 @@ A Colleita es una página web de productos agrícolas destinado a que los agricu
  ```
     npm install
  ```
- 4. Sal de esta carpeta y navega a la carpeta de “AColleitaSpring” una vez ahí tienes que ir al fichero “application.properties” la ruta hasta el es
+ 4. Sal de esta carpeta y navega a la carpeta de “AColleitaSpring” una vez ahí tienes que ir al fichero “application.properties” la ruta hasta el es:
  ```
     AcolleitaSpring\src\main\resources\application.properties
  ```
- dentro de el cambia el nombre de la base de datos que se encuentra al final de la segunda línea “spring.datasource.url=jdbc:mysql://localhost:3306/colleita” llamada “colleita” por el nombre de tu base de datos y el la contraseña del usuario root que se encuentra en la cuarta línea “spring.datasource.password=” por la contraseña que tengas asignada al usuario root.
+ Dentro de este fichero cambia el nombre de la base de datos que se encuentra al final de la segunda línea:
+ ```
+    spring.datasource.url=jdbc:mysql://localhost:3306/colleita
+ ```
+   cambia “colleita” por el nombre de tu base de datos.
+   Ahora tienes que configurar la contraseña del usuario root que se encuentra en la cuarta línea:
+    ```
+    spring.datasource.password= 
+ ```
+   Tienes que poner la contraseña que tengas asignada al usuario root después del "=" en mi caso no tengo puesto nada porque no tengo ninguna contraseña asignada al usuario root.
