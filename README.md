@@ -1,5 +1,7 @@
 # A Colleita
-A Colleita es una página web de productos agrícolas destinado a que los agricultores gallegos puedan mostrar y vender sus productos al mayor número de gente posible
+A Colleita es una página web que tiene como objetivo conectar a los consumidores con los agricultores locales de Galicia. Nuestro objetivo principal es impulsar el consumo de productos frescos y de alta calidad, al mismo tiempo que ayudamos a los pequeños productores de la región. Al eliminar a los intermediarios, garantizamos que tanto los agricultores como los consumidores reciban beneficios justos y directos.
+## Abstract
+A Colleita is a website that aims to connect consumers with local farmers in Galicia. Our  principal objective is to increase the consumption of fresh and high quality products, while helping small producers in the region. By removing the intermediary, we ensure that farmers and customers receive fair and direct benefits.
 ## Instalación y configuración
 1. Clonar el repositorio en el directorio elegido
  ```
@@ -30,7 +32,7 @@ A Colleita es una página web de productos agrícolas destinado a que los agricu
  8. Tienes que poner la contraseña que tengas asignada al usuario root después del "=" en mi caso no tengo puesto nada porque no tengo ninguna contraseña asignada al usuario root.
 
  9. Iniciar el back, AColleitaSpring.
- 
+
  10. Iniciar el front, ColleitaReact. Utilizando el siguiente comando.
  ```
     npm run dev
