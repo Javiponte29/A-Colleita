@@ -9,3 +9,8 @@ A Colleita es una página web de productos agrícolas destinado a que los agricu
  ```
     CREATE DATABASE nombre_bd;
  ```
+3. Navega al directorio donde has clonado el proyecto y accede a la carpeta  “ColleitaReact” una vez ahí ejecuta el siguiente comando:
+ ```
+    npm install
+ ```
+ 4. Ahora sal de esta carpeta y navega a la carpeta de “AColleitaSpring” una vez ahí hay que ir a la carpeta de “src”, dentro de ella a “main”, dentro de la carpeta “main” accede al fichero “application.properties”,  dentro de el cambia el nombre de la base de datos que se encuentra al final de la segunda línea “spring.datasource.url=jdbc:mysql://localhost:3306/colleita” llamada “colleita” por el nombre de tu base de datos y el la contraseña del usuario root que se encuentra en la cuarta línea “spring.datasource.password=” por la contraseña que tengas asignada al usuario root. La ruta a el “application.properties” es “AcolleitaSpring\src\main\resources\application.properties”.
