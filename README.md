@@ -23,7 +23,7 @@ A Colleita es una página web de productos agrícolas destinado a que los agricu
  ```
    cambia “colleita” por el nombre de tu base de datos.
    Ahora tienes que configurar la contraseña del usuario root que se encuentra en la cuarta línea:
-    ```
+ ```
     spring.datasource.password= 
  ```
    Tienes que poner la contraseña que tengas asignada al usuario root después del "=" en mi caso no tengo puesto nada porque no tengo ninguna contraseña asignada al usuario root.
