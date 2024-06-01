@@ -22,12 +22,15 @@ A Colleita es una página web de productos agrícolas destinado a que los agricu
     spring.datasource.url=jdbc:mysql://localhost:3306/colleita
  ```
  6. Cambia “colleita” por el nombre de tu base de datos.
+
  7. Ahora tienes que configurar la contraseña del usuario root que se encuentra en la cuarta línea:
  ```
     spring.datasource.password= 
  ```
  8. Tienes que poner la contraseña que tengas asignada al usuario root después del "=" en mi caso no tengo puesto nada porque no tengo ninguna contraseña asignada al usuario root.
+
  9. Iniciar el back, AColleitaSpring.
+ 
  10. Iniciar el front, ColleitaReact. Utilizando el siguiente comando.
  ```
     npm run dev
