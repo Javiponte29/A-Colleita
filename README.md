@@ -32,8 +32,8 @@ A Colleita is a website that aims to connect consumers with local farmers in Gal
  8. Tienes que poner la contraseña que tengas asignada al usuario root después del "=" en mi caso no tengo puesto nada porque no tengo ninguna contraseña asignada al usuario root.
 
  9. Flecha en rojo indica donde hay que poner el nombre de la base de datos y la flecha en verde indica donde se tiene que poner la contraseña del usuario root
+     
      ![properties](https://github.com/Javiponte29/A-Colleita/assets/116550466/eae09114-7b8c-4d80-b953-5d50bea90799)
-
 
  11. Iniciar el back, AColleitaSpring.
 
@@ -41,7 +41,18 @@ A Colleita is a website that aims to connect consumers with local farmers in Gal
  ```
     npm run dev
  ```
-## Capturas de la web
+## ALgunas capturas de la web
 ### Home
 ![Home](https://github.com/Javiponte29/A-Colleita/assets/116550466/b661e170-b276-492e-85cc-75c21593e012)
 
+### Productos
+![Productos](https://github.com/Javiponte29/A-Colleita/assets/116550466/235c5139-6821-4a7a-bd8d-d4a521daf798)
+
+### Perfil
+![CarritoProductos](https://github.com/Javiponte29/A-Colleita/assets/116550466/ff54ac99-4781-4d91-afc1-e5c03cefd3c4)
+
+### Ver Producto
+![VerProducto](https://github.com/Javiponte29/A-Colleita/assets/116550466/89e16c6a-cb17-48a4-80cd-bdb0e96878f2)
+
+### Modal
+![Modal-Productos](https://github.com/Javiponte29/A-Colleita/assets/116550466/be61d5ac-c4bd-4ef0-ad70-18fa41b5d53d)
