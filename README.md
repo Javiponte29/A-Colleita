@@ -31,9 +31,13 @@ A Colleita is a website that aims to connect consumers with local farmers in Gal
  ```
  8. Tienes que poner la contraseña que tengas asignada al usuario root después del "=" en mi caso no tengo puesto nada porque no tengo ninguna contraseña asignada al usuario root.
 
- 9. Iniciar el back, AColleitaSpring.
+ 9. Flecha en rojo indica donde hay que poner el nombre de la base de datos y la flecha en verde indica donde se tiene que poner la contraseña del usuario root
+     ![properties](https://github.com/Javiponte29/A-Colleita/assets/116550466/eae09114-7b8c-4d80-b953-5d50bea90799)
 
- 10. Iniciar el front, ColleitaReact. Utilizando el siguiente comando.
+
+ 11. Iniciar el back, AColleitaSpring.
+
+ 12. Iniciar el front, ColleitaReact. Utilizando el siguiente comando.
  ```
     npm run dev
  ```
