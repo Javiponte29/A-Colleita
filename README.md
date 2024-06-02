@@ -37,3 +37,7 @@ A Colleita is a website that aims to connect consumers with local farmers in Gal
  ```
     npm run dev
  ```
+## Capturas de la web
+### Home
+![Home](https://github.com/Javiponte29/A-Colleita/assets/116550466/b661e170-b276-492e-85cc-75c21593e012)
+
